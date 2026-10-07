@@ -28,14 +28,14 @@
 <body>
 
 <h1>BagR — Privacy Policy</h1>
-<p class="updated">Last updated: 5 September 2026</p>
+<p class="updated">Last updated: 7 October 2026</p>
 
 <p>This describes exactly what BagR collects, where it goes, and what you can do
 about it. It is written from what the app actually does, not from intent.</p>
 
 <p>BagR is operated by <strong>Sreekumar Sasidharan</strong>, an individual
 developer based in India. For any question about this policy or your data:
-<a href="mailto:srsn119@gmail.com">srsn119@gmail.com</a>.</p>
+<a href="mailto:contact@bagrapp.in">contact@bagrapp.in</a>.</p>
 
 <h2>What we collect</h2>
 
@@ -60,21 +60,54 @@ purpose of the app, but it is worth being explicit: anyone you invite can see
 everything on that list, including items added before they joined.</p>
 
 <h3>Your location</h3>
-<p>Only if you allow it, and only <strong>approximate</strong> location — the app asks
-the operating system for a coarse fix, not a precise one.</p>
-<p>It is used for one thing: working out roughly how far away a shop is. When you send
-your list to a shop, that approximate position is attached to the request, and the
-shop sees it as a distance — "1.6&nbsp;km away". If you refuse the permission the app
-carries on and simply shows no distance.</p>
+<p>Only if you allow it, and only while you are using the app. The app asks the
+operating system for a "balanced" fix, accurate to roughly a hundred metres, and it is
+stored as latitude and longitude.</p>
+<p>It is used for one thing: working out how far away a shop is. When you send your list
+to a shop, that position is attached to the request. The shop's screen shows it as a
+distance — "1.6&nbsp;km away" — but the coordinates are stored on that request, and the
+shop's account can read it, so treat it as the shop knowing roughly where you were when
+you sent the list. If you refuse the permission the app carries on, sends no position
+and shows no distance.</p>
 
-<h3>Your address and phone number</h3>
-<p>You can save a delivery address and a contact number in the app. Both are stored in
-a private area of your account that <strong>nobody else can read</strong> — not other
-members of your lists, and not shops. They exist so the app can fill them in for you
-later, and nothing in BagR currently sends either of them anywhere.</p>
+<h3>Your addresses and phone number</h3>
+<p>You can save addresses and a contact number in the app. They are stored in a private
+area of your account that <strong>nobody else can read</strong> — not other members of
+your lists, and not shops.</p>
+<p>You can also choose one of your saved addresses for a list. A copy is then kept on
+that list, so the app can use it for delivery, and the other members of that list can
+see it.</p>
+<p><strong>A delivery address is shared with a shop only if you choose delivery</strong>
+when you accept the shop's reply. It is saved on that order, and the shop can read it
+only once you have accepted. For a pickup order the shop never receives an address or
+your phone number.</p>
 <p>If you register a shop, the shop's <em>own</em> name, phone number and address are
 different: those are business details, shown to any household that finds your shop,
 which is the point of listing it.</p>
+
+<h3>Your orders</h3>
+<p>When you send a list to a shop, the order records the items and quantities, your
+display name and your household's name, which shop it went to, the shop's reply (what is
+in stock, any substitute it offered, and the price it put on each item), the order's
+status and times, and the four-digit code used at handover. BagR does not take payment
+or card details — a price here is only what the shop says the item costs, and you pay
+the shop yourself.</p>
+<p>Orders you have sent stay on your account and on the shop's side as a record of the
+transaction, as set out under <em>How long we keep it</em> below.</p>
+
+<h3>Notifications</h3>
+<p>Only if you allow them. The app stores a token that identifies your phone to the
+notification service (Apple's and Google's push services, through Firebase Cloud
+Messaging) and your time zone, so notifications can be delivered and not sent in the
+middle of the night. You can turn notifications off in the app or in your phone's
+settings.</p>
+
+<h3>Photos and feedback</h3>
+<p>If you run a shop you can add a storefront photo, which is stored with your shop and
+shown to households that find it. The app asks for access to your photo library only
+when you choose to add one. If you use <em>Report a problem</em>, the message you write
+is stored with your display name, the list you were in, and your app version and
+platform, so we can look into it.</p>
 
 <h3>Your camera</h3>
 <p>Only if you allow it, and only while you are scanning a shop's code. The camera
@@ -82,22 +115,26 @@ feed is read on your phone to find the code and is never recorded, stored or sen
 anywhere. If you refuse the permission you can type the code instead.</p>
 
 <h3>Diagnostics</h3>
-<p>Crash reports (Firebase Crashlytics) and usage events (Firebase Analytics). Events
-record <em>that</em> something happened — an item was added, a list created — never
-<em>what</em> the item was. Analytics is disabled in development builds.</p>
+<p>Crash reports (Firebase Crashlytics) and usage events (Firebase Analytics). Both are
+tied to your account's user ID, so a crash or a pattern of use can be traced to an
+account when we investigate it. Events record <em>that</em> something happened — an
+item was added, a list created — never <em>what</em> the item was. Analytics is
+disabled in development builds.</p>
 
 <h2>Where your data goes</h2>
 <table>
   <tr><th>Processor</th><th>What they receive</th><th>Why</th></tr>
-  <tr><td>Google Firebase (Auth, Firestore, Crashlytics, Analytics)</td>
-      <td>Account details, list contents, crash and usage data</td>
-      <td>Stores your lists and keeps them in sync</td></tr>
+  <tr><td>Google Firebase (Auth, Firestore, Storage, Cloud Messaging, Crashlytics, Analytics)</td>
+      <td>Account details, list and order contents, shop photos, notification tokens, crash and usage data</td>
+      <td>Stores your lists and orders, keeps them in sync, and delivers notifications</td></tr>
   <tr><td>Google Sign-In</td><td>Authentication request</td><td>Signing in</td></tr>
   <tr><td>Apple (Sign in with Apple)</td><td>Authentication request</td><td>Signing in</td></tr>
   <tr><td>A shop you send your list to</td>
-      <td>Your display name, the items on that list, and your approximate distance
-          from them. Not your email, not your address, not your phone number.</td>
-      <td>So they can tell you what they have</td></tr>
+      <td>Your display name, the items on that list, and the location your phone
+          reported when you sent it (shown to the shop as a distance). If you choose
+          delivery and the shop accepts, also the delivery address you picked. Never
+          your email address, and never your phone number.</td>
+      <td>So they can tell you what they have and, for a delivery order, bring it to you</td></tr>
 </table>
 <p>A shop is an independent business, not a processor acting for us. Nothing reaches
 one until you choose to send it your list, and what goes is only what is listed
@@ -119,7 +156,7 @@ above.</p>
       if you are not satisfied with our response</li>
 </ul>
 <p>To exercise any of these, email
-<a href="mailto:srsn119@gmail.com">srsn119@gmail.com</a>. We aim to respond within
+<a href="mailto:contact@bagrapp.in">contact@bagrapp.in</a>. We aim to respond within
 30 days. Sreekumar Sasidharan is the point of contact for all data questions.</p>
 
 <h2>How long we keep it</h2>
@@ -127,6 +164,9 @@ above.</p>
   <tr><td>Lists and items</td><td>Until you or another member deletes them, or the list is deleted</td></tr>
   <tr><td>Purchase history</td><td>Until the list is deleted</td></tr>
   <tr><td>Account</td><td>Until you delete your account</td></tr>
+  <tr><td>Orders you sent to a shop</td><td>Kept as a record of the transaction for the household and the shop. They are deleted with a list you delete, and are not removed when you delete your account while other people still share the list or the shop still has them.</td></tr>
+  <tr><td>Notification tokens</td><td>Until you sign out of the app on that phone</td></tr>
+  <tr><td>Problem reports</td><td>Until we have dealt with them; ask us to delete yours at any time</td></tr>
   <tr><td>Crash and analytics data</td><td>Per Firebase's retention defaults</td></tr>
 </table>
 
@@ -164,7 +204,7 @@ believe a child has given us data, contact us and we will delete it.</p>
 the top always reflects the current version.</p>
 
 <h2>Contact</h2>
-<p>Sreekumar Sasidharan — <a href="mailto:srsn119@gmail.com">srsn119@gmail.com</a></p>
+<p>Sreekumar Sasidharan — <a href="mailto:contact@bagrapp.in">contact@bagrapp.in</a></p>
 
 </body>
 </html>
